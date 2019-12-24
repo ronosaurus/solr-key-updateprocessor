@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- https://github.com/arafalov/simplest-solr-config/blob/master/solr-7.3/configset/solrconfig.xml -->
+<schema name="default-config" version="1.6">    	
+	<field name="name" type="string" required="true" indexed="true" stored="true" />
+	<field name="endpoint" type="string" required="true" indexed="true" stored="true" />
+	<field name="_version_" type="plong" indexed="false" stored="false"/>
+    <uniqueKey>name</uniqueKey>
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true" />
+	<fieldType name="plong" class="solr.LongPointField" docValues="true" />	
+</schema>

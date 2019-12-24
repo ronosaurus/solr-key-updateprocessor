@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>  
+  <luceneMatchVersion>8.2.0</luceneMatchVersion>
+  <requestHandler name="/select" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="echoParams">explicit</str>
+      <str name="wt">json</str>
+      <str name="indent">true</str>
+    </lst>
+  </requestHandler>
+  <!-- https://stackoverflow.com/questions/7815628/most-simple-way-url-to-trigger-solr-commit-of-all-pending-docs -->
+  <requestHandler name="/update" class="solr.UpdateRequestHandler">
+	<lst name="defaults">
+		<str name="update.chain">ron</str>
+	</lst>
+  </requestHandler>
+  <updateRequestProcessorChain name="ron">
+ 	    <processor class="com.ronosaurus.solr.updateprocessor.LogSolrKeyChangeFactory" />    
+  </updateRequestProcessorChain>
+</config>
